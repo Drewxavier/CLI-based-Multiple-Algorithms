@@ -155,9 +155,6 @@ class Inventory implements InventoryInterface
 		$newQty = max(0, $current - $qty);
 		$this->items[$key]->setQuantity($newQty);
 
-		if ($newQty === 0) {
-			unset($this->items[$key]);
-		}
 		return true;
 
 	}
@@ -221,8 +218,12 @@ function printHelp(): void
 	echo "  update <name> <qty>        - set quantity\n";
 	echo "  decrease <name> <qty>      - decrease quantity\n";
 	echo "  remove <name>              - delete item\n";
-	echo "  get <name> <action> [qty]  - show item quantity\n";
-	echo "          actions: view, update <qty>, decrease <qty>, remove\n";
+	echo "  get <name> <action> [qty]\n";
+	echo "          actions: view      -show item quantity\n";
+	echo "                   update    -set quantity\n";
+    echo "                   decrease  -subtract quantity\n";
+	echo "                   remove    -delete item\n";
+	echo " \n";
 	echo "  list                       - show all items\n";
 	echo "  help                       - display this message\n";
 	echo "  exit                       - leave the program\n";
@@ -258,6 +259,11 @@ while (true) {
 				break;
 			}
 			[$name, $qty] = $parts;
+			if (is_numeric($name)){
+				echo "Error: Item name must come first, then quantity.\n";
+				echo "Correct format: get <name> <qty>\n";
+				break;
+			}
 			if (!is_numeric($qty) || (int)$qty < 0) {
 				echo "Quantity must be a non-negative number.\n";
 				break;
