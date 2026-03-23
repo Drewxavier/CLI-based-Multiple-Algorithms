@@ -209,3 +209,14 @@ $list ->traverse();
 $list ->delete(2);
 echo "Linked List after deleting 2: \n";
 $list -> traverse();
+
+function factorial ($n){
+    if ($n == 1){
+        echo $n . PHP_EOL;
+        return 1;
+    } else {
+        echo "$n * ";
+        return $n*factorial($n-1);
+    }
+}
+echo "\n Factorial of 5 = " . factorial(5);
