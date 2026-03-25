@@ -80,3 +80,27 @@ $arr_3= [23,3,5,6,77,67,45,34,64,75];
 $result_4 = recursiveQuick($arr_3);
 
 echo "\nResults for the array: ". implode(", ", $arr_3). " are: \n" . implode(", ", $result_4);
+
+//Recursion in bubblesort array
+function element(&$array, $index_1,  $index= 0){
+    if ($index>=$index_1 - 1)//if there are no more values to stop
+        return;
+    if ($array[$index]> $array[$index+1]){
+        $temp = $array[$index];
+        $array[$index]= $array[$index+1];
+        $array[$index+1]=$temp;     
+    }
+    element($array,$index_1, $index+1);//do not return
+}
+function recursiveBubble($array, $n=null){
+    if ($n  === null) $n = count($array);//initialize n to the array length if it wasn't provided
+    
+    if($n == 1) return $array;//checks if the problem size has shrunk to 1 element, to stop recursion
+    
+    element($array, $n);
+    return recursiveBubble($array, $n -1);
+}
+$arr_4 =[21, 42 ,33 ,55 ,45 ,57 ,76 ,7 ,98 , 8];
+echo "\nBefore sort for Bubble sort: " . implode(", ", $arr_4) . "\n";
+$result_5 =recursiveBubble($arr_4);
+echo "After sort: " . implode( ", ", $result_5);
