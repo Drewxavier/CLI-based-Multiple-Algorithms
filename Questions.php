@@ -11,7 +11,7 @@ $a = 5;
 $b = 6;
 $result =product($a,$b);
 echo "Product for the value " .$a. " and ".$b . " is: ".$result;
-//time complexity is 0(n) 
+//time complexity is 0(b) 
 
 function power($a, $b){
     if ($b< 0) {
@@ -27,7 +27,7 @@ $a_1 = 2;
 $b_1= 4;
 $result_1= power($a_1, $b_1);
 echo "\nThe number ".$a_1." to the power of ".$b_1." is: " .$result_1;
-//time complexity is 0(2^n) 
+//time complexity is 0(1) 
 
 function mod($a,$b){
     if ($b <= 0){
@@ -54,7 +54,7 @@ $a_3 = 60;
 $b_3 = 7;
 $result_4 = div($a_3, $b_3);
 echo "\nDivision of the number: ".$a_3 ." to " .$b_3. " is: " .$result_4;
-//time complexity is 0(n)
+//time complexity is 0(a)
 
 function sqareroot($n = 0){
     return sqrt_helper($n, 1, $n);
@@ -85,7 +85,7 @@ function square($n){
 $value_2 = 441;
 $result_6= sqareroot($value_2);
 echo "\nSquareroot of the number: ". $value_2 . " is: " .$result_6;
-//time complexity is 0(2^n)
+//time complexity is 0(squareroot of n)
 
 //question 7
 //The binary search tree while take much longer, at the complexity of 0(log n)(recursive meaning increasing in depth) as the height of for example the rightside of the tree becomes larger
@@ -94,9 +94,9 @@ echo "\nSquareroot of the number: ". $value_2 . " is: " .$result_6;
 //0(log n)
 
 //question 9
-//To append is to attach or add a value to the end. It uses the time complexity of 0(2^n) since
-//whenever a new value is added, it has to generate a new array WITH now the value, taking it longer to generate since it is calling itself again, this time with 
-//a new value
+//To append is to attach or add a value to the end. It uses the time complexity of 0(n) since
+//whenever a new value is added, it has to generate a new array WITH now the value, taking it longer to generate but it will only add one value 
+//repeatedly, meaning the method won't change
 
 function sum($n){
     $sum = 0;
@@ -110,7 +110,7 @@ $a_4 = 1000;
 $result_7 = sum($a_4);
 echo "\nSum of the numbers: ".$result_7;
 
-//time complexity is 0(n)
+//time complexity is 0(log n)
 
 //question 11
-//time complexity is 0(n^2)
+//time complexity is 0(nlog n)
